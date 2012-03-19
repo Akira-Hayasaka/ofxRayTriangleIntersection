@@ -70,11 +70,11 @@ public:
                 verts.push_back(faces.at(i).v1);
                 verts.push_back(faces.at(i).v2);        
                 IntersectInfo intersecctInfo = judgeRayTri(ray.rayOrig, rayDir, verts);
-                intersecctInfos.push_back(intersecctInfo);
                 
                 if (intersecctInfo.bIntersect)
                 {
                     faces.at(i).bHit = true;
+                    intersecctInfos.push_back(intersecctInfo);
                     break;
                 }
             }
@@ -112,6 +112,19 @@ public:
         }
         
         ofPopStyle();          
+    }
+    
+    void drawRayDebug()
+    {
+        ofPushStyle();
+        
+        ofSetColor(ofColor::blue);
+        for (int i = 0; i < rays.size(); i++)
+        {
+            ofLine(rays.at(i).rayOrig, rays.at(i).rayEnd);    
+        }
+        
+        ofPopStyle();         
     }
     
     vector<IntersectInfo>   intersecctInfos;
