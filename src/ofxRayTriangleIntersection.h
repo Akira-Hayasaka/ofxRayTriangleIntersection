@@ -48,7 +48,7 @@ class ofxRayTriangleIntersection
 {
 public:
     
-    void checkMeshIntersection(vector<Ray> p_rays, vector<FaceTri> p_faces)
+    vector<IntersectInfo> checkMeshIntersection(vector<Ray> p_rays, vector<FaceTri> p_faces)
     {
         faces.clear();
         rays.clear();
@@ -79,6 +79,7 @@ public:
                 }
             }
         }
+        return intersecctInfos;
     }    
     
     void drawDebug()
