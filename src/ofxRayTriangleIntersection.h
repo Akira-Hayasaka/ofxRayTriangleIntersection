@@ -87,14 +87,17 @@ public:
         ofPushStyle();
         for (int i = 0; i < faces.size(); i++)
         {   
+            ofColor col;
             if (faces.at(i).bHit)
             {
-                ofSetColor(ofColor::magenta);                
+                col = ofColor::magenta;
             }
             else
             {
-                ofSetColor(ofColor::yellow);                
+                col = ofColor::yellow;
+                col.a = 20;
             }
+            ofSetColor(col);
             glBegin(GL_TRIANGLES);
             glVertex3f(faces.at(i).v0.x, faces.at(i).v0.y, faces.at(i).v0.z);
             glVertex3f(faces.at(i).v1.x, faces.at(i).v1.y, faces.at(i).v1.z);
